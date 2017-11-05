@@ -1,0 +1,24 @@
+<h2>Jukebox do Zenanzin</h2>
+
+<form ng-submit="artistaCtrl.salvaArtista(artistaCtrl.artista)">
+    <input 
+        class="form-control"
+        placeholder="Nome do artista"
+        type="text"
+        ng-required="true"
+        ng-model="artistaCtrl.artista.nome">
+    </input>
+
+    <input
+        class="form-control"
+        placeholder="Link da foto do artista"
+        type="text"
+        ng-model="artistaCtrl.artista.linkFoto">
+    </input>
+    
+    <button class="btn btn-primary btn-block" type="submit">Cadastrar artista</button>
+</form>
+
+<div class="alert alert-danger" ng-show="artistaCtrl.artistaCadastradoExiste()">
+    O artista já existe no sistema.    
+</div>
