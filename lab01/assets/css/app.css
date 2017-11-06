@@ -3,7 +3,7 @@
     margin-bottom: 35px;
 }
 
-.container {
+.home {
     margin-top: 50px;
 }
 
@@ -13,4 +13,9 @@
 
 .content .form-control {
     margin-bottom: 10px;
+}
+
+.profile.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 20px;
 }

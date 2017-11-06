@@ -1,39 +1,26 @@
-<div class="container">
+<div class="container home">
     <div class="form-home row">
-        <form class="col-4">
+        <form class="col-4" ng-submit="musicaCtrl.salvarMusica(musicaCtrl.musica, musicaCtrl.album, musicaCtrl.artista)">
             <h3>Cadastrar músicas</h3>
-            <input type="text" class="form-control" placeholder="Nome da música"/>
-            <select class="custom-select form-control">
-                <option selected>Selecione o artista</option>
-                <option value="1">Ed Sheeran</option>
-                <option value="2">Safadão</option>
-                <option value="3">Pablo do Arrocha</option>
-                <option value="4">Zenan da pisadinha</option>
+            <hr class="my-4">
+            <input type="text" class="form-control" placeholder="Nome da música" ng-model="musicaCtrl.musica.nome" ng-required="true"/>
+            <select 
+                class="form-control"
+                ng-options="artista.nome for artista in musicaCtrl.artistas"
+                ng-required="true"
+                ng-model="musicaCtrl.artista">
+                <option value="" ng-disabled="true">Selecione um artista</option>
             </select>
-            <input type="text" class="form-control" placeholder="Nome do álbum"/>
-            <input type="text" class="form-control" placeholder="Ano de lançamento"/>
-            <input type="text" class="form-control" placeholder="Duração"/>
+            <input type="text" class="form-control" placeholder="Nome do álbum" ng-model="musicaCtrl.album"/>
+            <input type="number" class="form-control" placeholder="Ano de lançamento" ng-model="musicaCtrl.musica.ano" ng-pattern="/^\d{4}$/"/>
+            <input type="text" class="form-control" placeholder="Duração (hh:mm:ss)" ng-model="musicaCtrl.musica.duracao" ng-pattern="/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/"/>
             <button type="submit" class="btn btn-primary btn-block">Cadastrar música</button>
+            {{musicaCtrl.musica}}
         </form>
         <div class="artistas-table col-8">
             <h3>Artistas cadastrados</h3>
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar artista" aria-label="Search">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome do artista</th>
-                        <th scope="text-right"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="artista in musicaCtrl.artistas">
-                        <td>{{artista.nome}}</td>
-                        <td class=" text-right">
-                            <button class="btn btn-primary btn-sm">Add. favoritos</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <hr class="my-4">
+            <artistas-table artistas='musicaCtrl.artistas'></artistas-table>
         </div>
     </div>
 </div>

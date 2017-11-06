@@ -20,6 +20,18 @@ angular-animate@^1.6.6:
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.5.11.tgz#ebfb3f343e543f9b2ef050fb4c2e9ee048d1772f"
 
+angular-strap@^2.3.12:
+  version "2.3.12"
+  resolved "https://registry.yarnpkg.com/angular-strap/-/angular-strap-2.3.12.tgz#fae21655cd77079671bf918ab7ed6227783062fa"
+
+angular-touch@^1.6.6:
+  version "1.6.6"
+  resolved "https://registry.yarnpkg.com/angular-touch/-/angular-touch-1.6.6.tgz#f2068282501b95e29135930d1ce715d5405ec3e5"
+
+angular1-ui-bootstrap4@^2.4.22:
+  version "2.4.22"
+  resolved "https://registry.yarnpkg.com/angular1-ui-bootstrap4/-/angular1-ui-bootstrap4-2.4.22.tgz#378697405c957b96f947f42322f36660cd3fc88d"
+
 "angular@>=1.2.15 <1.6":
   version "1.5.11"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.5.11.tgz#8c5ba7386f15965c9acf3429f6881553aada30d6"
@@ -32,9 +44,17 @@ bootstrap@4.0.0-beta.2:
   version "4.0.0-beta.2"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.2.tgz#4d67d2aa2219f062cd90bc1247e6747b9e8fd051"
 
+jquery@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
+
 ng-toast@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ng-toast/-/ng-toast-2.0.0.tgz#7fc133fc05e88690830e87cd3d1f193df1c33483"
   dependencies:
     angular ">=1.2.15 <1.6"
     angular-sanitize ">=1.2.15 <1.6"
+
+popper.js@^1.12.6:
+  version "1.12.6"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.12.6.tgz#91e12a97b07815258b76915d64044e8ac053d426"

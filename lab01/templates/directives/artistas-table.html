@@ -1,0 +1,17 @@
+<input class="form-control mr-sm-2" type="search" placeholder="Buscar artista" aria-label="Search">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nome do artista</th>
+            <th scope="text-right"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="artista in artistas">
+            <td>{{artista.nome}}</td>
+            <td class=" text-right">
+                <a ui-sref="perfil({nome: artista.nome})">Ver detalhes</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
