@@ -11,8 +11,8 @@
                 delete this.album;
                 delete this.artista;
                 NotificationService.success('Música criada com sucesso');
-            }, () => {
-                NotificationService.error('Aconteceu um erro');
+            }, (mensagem) => {
+                NotificationService.error(`Erro ao salvar. ${mensagem}`);
             });
         }
     });

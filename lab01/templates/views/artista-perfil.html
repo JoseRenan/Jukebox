@@ -6,9 +6,13 @@
             </div>
             <div class="col-10" style="padding-left:50px;">
                 <h1 class="display-4">{{perfilCtrl.artista.nome}}</h1>
-                <p class="lead">{{perfilCtrl.artista.albums.length}} álbums e {{perfilCtrl.artista.albums.length}} músicas cadastradas.</p>
+                <p class="lead">{{perfilCtrl.artista.albums.length}} álbums e {{perfilCtrl.numeroDeMusicas()}} músicas cadastradas.</p>
                 <hr class="my-4">
-                <button class="btn btn-primary btn-sm">Adicionar aos favorivos</button>
+                <div class="row">
+                    <jk-rating-stars max-rating="5" rating="perfilCtrl.artista.nota"></jk-rating-stars>
+                    <div style="width: 30px"></div>
+                    <botao-favorito eh-favorito="perfilCtrl.artista.ehFavorito"></botao-favorito>
+                </div>
             </div>
         </div>
     </div>

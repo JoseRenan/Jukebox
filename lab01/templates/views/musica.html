@@ -12,10 +12,9 @@
                 <option value="" ng-disabled="true">Selecione um artista</option>
             </select>
             <input type="text" class="form-control" placeholder="Nome do álbum" ng-model="musicaCtrl.album"/>
-            <input type="number" class="form-control" placeholder="Ano de lançamento" ng-model="musicaCtrl.musica.ano" ng-pattern="/^\d{4}$/"/>
-            <input type="text" class="form-control" placeholder="Duração (hh:mm:ss)" ng-model="musicaCtrl.musica.duracao" ng-pattern="/^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/"/>
+            <input type="number" class="form-control" placeholder="Ano de lançamento" ng-model="musicaCtrl.musica.ano"/>
+            <input type="text" class="form-control" placeholder="Duração (hh:mm:ss)" ng-model="musicaCtrl.musica.duracao"/>
             <button type="submit" class="btn btn-primary btn-block">Cadastrar música</button>
-            {{musicaCtrl.musica}}
         </form>
         <div class="artistas-table col-8">
             <h3>Artistas cadastrados</h3>

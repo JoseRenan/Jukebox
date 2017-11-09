@@ -1,4 +1,4 @@
-const app = angular.module('jukeboxApp', ['ui.router', 'ngToast']);
+const app = angular.module('jukeboxApp', ['ui.router', 'ngToast', 'jkAngularRatingStars']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/inicio');

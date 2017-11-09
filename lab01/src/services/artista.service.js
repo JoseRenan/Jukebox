@@ -15,6 +15,15 @@
             return artista.albums.find(buscaAlbum);
         }
 
+        let musicaJaAdicionada = (nomeMusica, nomeAlbum, artista) => {
+            let album = buscaAlbumPorNome(artista, nomeAlbum);
+            if (album) {
+                let buscaMusica = (musica) => { return musica.nome === nomeMusica };
+                return !!album.musicas.find(buscaMusica);
+            }
+            return false;
+        }
+
         let salvaMusicaEmAlbum = (artista, nomeAlbum, musica) => {
             let albumSalvo = buscaAlbumPorNome(artista, nomeAlbum);
             if (albumSalvo) {
@@ -40,12 +49,13 @@
 
         this.salvarMusicaEmArtista = (musica, nomeAlbum, artista, onSuccess, onError) => {
             let artistaSalvo = this.buscaArtistaPorNome(artista.nome);
-            console.log(artistaSalvo);
-            if (artistaSalvo) {
+            if (!artistaSalvo) {
+                onError("Artista inexistente");
+            } else if (musicaJaAdicionada(musica.nome, nomeAlbum, artista)) {
+                onError("Música já inserida no álbum");
+            } else {
                 salvaMusicaEmAlbum(artistaSalvo, nomeAlbum, musica);
                 onSuccess();
-            } else {
-                onError();
             }
         }
     });
