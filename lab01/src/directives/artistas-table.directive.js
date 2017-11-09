@@ -4,7 +4,6 @@
     app.directive('artistasTable', function ($state) {
         return {
             restrict: 'E',
-            link: link,
             scope: {
                 artistas: '='
             },
