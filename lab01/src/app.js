@@ -23,5 +23,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                     return ArtistaService.buscaArtistaPorNome($stateParams.nome);
                 }
             }
+        }).state('playlists', {
+            url: '/playlists',
+            controller: 'playlistController',
+            controllerAs: 'playlistCtrl',
+            templateUrl: 'templates/views/playlist.html'
         });
 });

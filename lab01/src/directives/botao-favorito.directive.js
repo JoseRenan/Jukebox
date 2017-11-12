@@ -5,7 +5,10 @@
         
         let link = (scope, element, attrs) => {
             scope.favoritarOuDesfavoritar = () => {
-                scope.ehFavorito = !scope.ehFavorito;
+                let resposta = confirm("Você realmente deseja fazer isso?");
+                if (resposta) {
+                    scope.ehFavorito = !scope.ehFavorito;
+                }
             }
         }
 
