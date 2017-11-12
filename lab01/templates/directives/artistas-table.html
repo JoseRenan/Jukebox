@@ -1,4 +1,4 @@
-<input class="form-control mr-sm-2" type="search" placeholder="Buscar artista" aria-label="Search">
+<input class="form-control mr-sm-2" ng-model="textoBusca" type="search" placeholder="Buscar artista" aria-label="Search">
 <table class="table table-striped">
     <thead>
         <tr>
@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="artista in artistas">
+        <tr ng-repeat="artista in artistas | filter:textoBusca">
             <td>{{artista.nome}}</td>
             <td class=" text-right">
                 <a ui-sref="perfil({nome: artista.nome})">Ver detalhes</a>
