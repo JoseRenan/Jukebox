@@ -18,7 +18,12 @@
                     </div>
                 </div>
             </form>
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar música para adionar à playlist" aria-label="Search">
+            <input
+                class="form-control mr-sm-2"
+                ng-model="playlistCtrl.searchMusica"
+                type="search"
+                placeholder="Buscar música para adionar à playlist">
+            </input>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -27,10 +32,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="musica in playlistCtrl.musicas" ng-style="{'background-color': musica.adicionada ? 'yellow' : ''}">
+                    <tr
+                        ng-repeat="musica in playlistCtrl.musicas | filter:playlistCtrl.searchMusica"
+                        ng-style="{'background-color': musica.adicionada ? 'yellow' : ''}">
                         <td>{{musica.nome}}</td>
                         <td class=" text-right">
-                            <a href="" ng-click="playlistCtrl.adicionarOuRemoverMusicaPlaylist(musica, playlistCtrl.playlist)">Adicionar à playlist</a>
+                            <a href=""
+                                ng-click="playlistCtrl.adicionarOuRemoverMusicaPlaylist(musica, playlistCtrl.playlist)">
+                                Adicionar/Remover
+                            </a>
                         </td>
                     </tr>
                 </tbody>
@@ -39,7 +49,13 @@
         <div class="artistas-table col-6">
             <h3>Playlists criadas</h3>
             <hr class="my-4">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar playlists" aria-label="Search">
+            <input
+                class="form-control mr-sm-2"
+                ng-model="playlistCtrl.searchPlaylists"
+                type="search"
+                placeholder="Buscar playlists"
+                aria-label="Search">
+            </input>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -48,10 +64,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="musica in playlistCtrl.playlists">
-                        <td>{{musica.nome}}</td>
+                    <tr ng-repeat="playlist in playlistCtrl.playlists | filter:playlistCtrl.searchPlaylists">
+                        <td>{{playlist.nome}}</td>
                         <td class=" text-right">
-                            <a href="">Ver detalhes</a>
+                            <a href="" ui-sref="detalhesPlaylist({nomePlaylist: playlist.nome})">Ver detalhes</a>
                         </td>
                     </tr>
                 </tbody>

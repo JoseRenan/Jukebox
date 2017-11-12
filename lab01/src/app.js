@@ -28,5 +28,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controller: 'playlistController',
             controllerAs: 'playlistCtrl',
             templateUrl: 'templates/views/playlist.html'
+        }).state('detalhesPlaylist', {
+            url: '/detalhes/:nomePlaylist',
+            controller: 'playlistDetalhesController',
+            controllerAs: 'detalhesCtrl',
+            templateUrl: 'templates/views/playlist-detalhes.html',
+            resolve: {
+                playlist: function($stateParams, PlaylistService) {
+                    return PlaylistService.buscaPlaylistPorNome($stateParams.nomePlaylist);
+                }
+            }
         });
 });

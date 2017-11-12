@@ -1,0 +1,65 @@
+<div class="profile jumbotron">
+    <div class="container">
+        <div style="padding-left:50px;">
+            <h1 class="display-4">{{detalhesCtrl.playlist.nome}}</h1>
+            <p class="lead">{{detalhesCtrl.playlist.musicas.length}} músicas</p>
+        </div>
+    </div>
+</div>
+<div class="container home">
+    <div class="row">
+        <div class="col-6">
+            <h3>Músicas da playlist</h3>
+            <hr class="my-4">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome da música</th>
+                        <th>Ano</th>
+                        <th>Duração</th>
+                        <th scope="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        ng-repeat="musica in detalhesCtrl.playlist.musicas">
+                        <td>{{musica.nome}}</td>
+                        <td>{{musica.ano}}</td>
+                        <td>{{musica.duracao}}</td>
+                        <td class="text-right">
+                            <a href="" ng-click="detalhesCtrl.removerMusica(musica)">
+                                Remover
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <h3>Adicionar músicas à playlist</h3>
+            <hr class="my-4">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome da música</th>
+                        <th>Ano</th>
+                        <th>Duração</th>
+                        <th scope="text-right"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="musica in detalhesCtrl.musicas">
+                        <td>{{musica.nome}}</td>
+                        <td>{{musica.ano}}</td>
+                        <td>{{musica.duracao}}</td>
+                        <td class="text-right">
+                            <a href="" ng-click="detalhesCtrl.adicionarMusica(musica)">
+                                Adicionar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

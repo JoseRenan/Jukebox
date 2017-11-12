@@ -3,7 +3,22 @@
     
     app.service('ArtistaService', function () {
         
-        this.artistas = [{"nome":"Ed Sheeran","linkFoto":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ7EYhQPsC4cWLjXm3z5v6yKJxZgtqAEqEPyY4K7ipc1Rih-XGoA","albums":[]}];
+        this.artistas = [{
+            "nome":"Ed Sheeran",
+            "linkFoto":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ7EYhQPsC4cWLjXm3z5v6yKJxZgtqAEqEPyY4K7ipc1Rih-XGoA",
+            "albums":[{
+                "nome": "Divide",
+                "musicas": [{
+                    "nome": "Shape of you",
+                    "ano": 2017,
+                    "duracao": "2:30"
+                }, {
+                    "nome": "Castle on the hill",
+                    "ano": 2017,
+                    "duracao": "2:30"
+                }]
+            }]
+        }];
 
         this.buscaArtistaPorNome = (nome) => {
             let buscaArtista = (artista) => { return artista.nome === nome };
