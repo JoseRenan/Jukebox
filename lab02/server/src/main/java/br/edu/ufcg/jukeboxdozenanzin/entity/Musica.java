@@ -9,6 +9,7 @@ public class Musica {
     private Integer musicaId;
     private String nome;
     private String duracao;
+    private Album album;
 
     public Musica() {}
 
@@ -43,5 +44,15 @@ public class Musica {
 
     public void setDuracao(String duracao) {
         this.duracao = duracao;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "fk_album")
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 }

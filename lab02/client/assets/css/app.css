@@ -1,0 +1,25 @@
+.content h2 {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.home {
+    margin-top: 50px;
+}
+
+.artistas-table {
+    padding-left: 80px;
+}
+
+.content .form-control {
+    margin-bottom: 10px;
+}
+
+.content .btn {
+    margin-bottom: 10px;
+}
+
+.profile.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}

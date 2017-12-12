@@ -1,0 +1,29 @@
+<div class="container home">
+    <div class="form-home row">
+        <form class="col-4"  ng-submit="artistaCtrl.salvaArtista(artistaCtrl.artista)">
+            <h3>Cadastrar artistas</h3>
+            <hr class="my-4">
+            <input 
+                class="form-control"
+                placeholder="Nome do artista"
+                type="text"
+                ng-required="true"
+                ng-model="artistaCtrl.artista.nome">
+            </input>
+
+            <input
+                class="form-control"
+                placeholder="Link da foto do artista"
+                type="text"
+                ng-model="artistaCtrl.artista.linkFoto">
+            </input>
+            
+            <button class="btn btn-primary btn-block" type="submit">Cadastrar artista</button>
+        </form>
+        <div class="artistas-table col-8">
+            <h3>Artistas cadastrados</h3>
+            <hr class="my-4">
+            <artistas-table artistas='artistaCtrl.artistas'></artistas-table>
+        </div>
+    </div>
+</div>

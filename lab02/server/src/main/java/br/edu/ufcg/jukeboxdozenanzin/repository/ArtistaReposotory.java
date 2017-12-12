@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface ArtistaReposotory extends CrudRepository<Artista, Integer> {
-    List<Artista> findArtistasByNomeContains(String nome);
+    List<Artista> findArtistasByNomeContaining(String nome);
     Artista findArtistaByNome(String nome);
 }

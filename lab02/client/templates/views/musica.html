@@ -1,0 +1,25 @@
+<div class="container home">
+    <div class="form-home row">
+        <form class="col-4" ng-submit="musicaCtrl.salvarMusica(musicaCtrl.musica, musicaCtrl.album, musicaCtrl.artista)">
+            <h3>Cadastrar músicas</h3>
+            <hr class="my-4">
+            <input type="text" class="form-control" placeholder="Nome da música" ng-model="musicaCtrl.musica.nome" ng-required="true"/>
+            <select 
+                class="form-control"
+                ng-options="artista.nome for artista in musicaCtrl.artistas"
+                ng-required="true"
+                ng-model="musicaCtrl.artista">
+                <option value="" ng-disabled="true">Selecione um artista</option>
+            </select>
+            <input type="text" class="form-control" placeholder="Nome do álbum" ng-model="musicaCtrl.album" ng-required="true"/>
+            <input type="number" class="form-control" placeholder="Ano de lançamento" ng-model="musicaCtrl.musica.ano" ng-required="true"/>
+            <input type="text" class="form-control" placeholder="Duração (mm:ss)" ng-model="musicaCtrl.musica.duracao" ng-required="true"/>
+            <button type="submit" class="btn btn-primary btn-block">Cadastrar música</button>
+        </form>
+        <div class="artistas-table col-8">
+            <h3>Artistas cadastrados</h3>
+            <hr class="my-4">
+            <artistas-table artistas='musicaCtrl.artistas'></artistas-table>
+        </div>
+    </div>
+</div>

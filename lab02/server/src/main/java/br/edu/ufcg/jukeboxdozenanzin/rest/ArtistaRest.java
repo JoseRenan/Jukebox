@@ -2,7 +2,9 @@ package br.edu.ufcg.jukeboxdozenanzin.rest;
 
 import br.edu.ufcg.jukeboxdozenanzin.entity.Artista;
 import br.edu.ufcg.jukeboxdozenanzin.service.ArtistaService;
+import br.edu.ufcg.jukeboxdozenanzin.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -28,7 +30,7 @@ public class ArtistaRest {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public Artista recuperarArtistaPorNome(@PathVariable Integer id) {
+    public Artista recuperarArtista(@PathVariable Integer id) {
         return artistaService.buscarArtista(id);
     }
 }
