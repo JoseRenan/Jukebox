@@ -13,11 +13,14 @@
             }
         }
 
-        this.query = (nome) => {
+        this.query = ({nome, idArtista} = {}) => {
             let data = {params: {}};
             if (nome) {
                 data.params.nome = nome;
+            } if (idArtista) {
+                data.params.idArtista = idArtista;
             }
+            console.log(data);
             return $http.get(this.url, data)
                 .then(API.successCallback)
                 .catch(API.errorCallback);

@@ -17,4 +17,6 @@ public interface MusicaRepository extends CrudRepository<Musica, Integer> {
 
     List<Musica> findMusicasByAlbum(Album album);
 
+    Musica findMusicaByNomeAndAlbum(String nome, Album album);
+
 }

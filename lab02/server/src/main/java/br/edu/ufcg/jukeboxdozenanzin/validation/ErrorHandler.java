@@ -12,6 +12,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(JukeboxException.class)
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(Exception ex) {
+        ex.printStackTrace();
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setErrorCode(HttpStatus.BAD_REQUEST.value());
         errorResponse.setMessage(ex.getMessage());
@@ -20,6 +21,7 @@ public class ErrorHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(Exception ex) {
+        ex.printStackTrace();
         ErrorResponse errorResponse = new ErrorResponse();
         errorResponse.setErrorCode(HttpStatus.BAD_REQUEST.value());
         errorResponse.setMessage("Ocorreu um erro interno no servidor, tente novamente mais tarde.");

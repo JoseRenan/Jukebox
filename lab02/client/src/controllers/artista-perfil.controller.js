@@ -1,28 +1,13 @@
 (function () {
     'use strict';
     
-    app.controller('artistaPerfilController', function (artista, OuvirService) {
+    app.controller('artistaPerfilController', function (musicas, artista, OuvirService) {
 
         this.artista = artista;
-        console.log(artista);
-
-        let getMusicas = () => {
-            let musicas = [];
-            let albums = this.artista.albums;
-            for (let i in albums) {
-                musicas = musicas.concat(albums[i].musicas);
-            }
-            return musicas;
-        };
-
-        this.musicas = getMusicas();
+        this.musicas = musicas;
 
         this.numeroDeMusicas = () => {
-            let numeroMusicas = 0;
-            for (let i in this.artista.albums) {
-                numeroMusicas += this.artista.albums[i].musicas.length;
-            }
-            return numeroMusicas;
+            return musicas.length;
         }
 
         this.ouvir = (musica) => {

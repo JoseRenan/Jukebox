@@ -1,13 +1,12 @@
 (function () {
     'use strict';
     
-    app.controller('musicaController', function (ArtistaService, NotificationService, artistas) {
+    app.controller('musicaController', function (MusicaService, NotificationService, artistas) {
         
         this.artistas = artistas;
-        console.log(artistas);
 
         this.salvarMusica = (musica, album, artista) => {
-            ArtistaService.salvarMusicaEmArtista(musica, album, artista, () => {
+            MusicaService.salvarMusicaEmArtista(musica, album, artista, () => {
                 delete this.musica;
                 delete this.album;
                 delete this.artista;

@@ -43,6 +43,13 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                             console.log("Ocorreu um erro");
                             console.log(error);
                         });
+                },
+                musicas: function($stateParams, MusicaService) {
+                    return MusicaService.listarMusicasPorArtista($stateParams.artistaId)
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
                 }
             }
         }).state('playlists', {

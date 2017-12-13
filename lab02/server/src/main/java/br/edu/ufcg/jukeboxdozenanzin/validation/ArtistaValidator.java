@@ -18,6 +18,18 @@ public class ArtistaValidator implements Validator<Artista> {
         validarExistenciaPorNome(artista.getNome());
     }
 
+    @Override
+    public boolean entidadeExiste(Artista artista) {
+        if (artistaService.recuperaArtistaPorNome(artista.getNome()) != null) {
+            return true;
+        }
+        if (artista.getArtistaId() != null) {
+            Artista artistaDb = artistaService.buscarArtista(artista.getArtistaId());
+            return artistaDb != null;
+        }
+        return false;
+    }
+
     private void validarAtributos(Artista artista) {
         if (artista.getNome() == null || artista.getNome().trim().isEmpty()) {
             throw new JukeboxException("Nome do artista não pode ser vazio");
