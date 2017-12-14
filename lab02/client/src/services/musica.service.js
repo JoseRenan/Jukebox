@@ -3,6 +3,10 @@
     
     app.service('MusicaService', function (Musica) {
 
+        this.listarMusicas = () => {
+            return Musica.query();
+        }
+
         this.listarMusicasPorArtista = (artistaId) => {
             return Musica.query({idArtista: artistaId});
         }

@@ -55,4 +55,26 @@ public class Musica {
     public void setAlbum(Album album) {
         this.album = album;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Musica)) return false;
+
+        Musica musica = (Musica) o;
+
+        if (!getMusicaId().equals(musica.getMusicaId()))return false;
+        if (!getNome().equals(musica.getNome())) return false;
+        if (!getDuracao().equals(musica.getDuracao())) return false;
+        return getAlbum().equals(musica.getAlbum());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getMusicaId().hashCode();
+        result = 31 * result + getNome().hashCode();
+        result = 31 * result + getDuracao().hashCode();
+        result = 31 * result + getAlbum().hashCode();
+        return result;
+    }
 }

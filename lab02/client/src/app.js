@@ -58,8 +58,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             controllerAs: 'playlistCtrl',
             templateUrl: 'templates/views/playlist.html',
             resolve: {
-                artistas: function(ArtistaService) {
-                    return ArtistaService.listarArtistas()
+                musicas: function(MusicaService) {
+                    return MusicaService.listarMusicas()
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
+                },
+                playlists: function(PlaylistService) {
+                    return PlaylistService.listarPlaylists()
                         .catch((error) => {
                             console.log("Ocorreu um erro");
                             console.log(error);
@@ -67,16 +74,20 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         }).state('detalhesPlaylist', {
-            url: '/detalhes/:nomePlaylist',
+            url: '/detalhes/:idPlaylist',
             controller: 'playlistDetalhesController',
             controllerAs: 'detalhesCtrl',
             templateUrl: 'templates/views/playlist-detalhes.html',
             resolve: {
-                playlist: function($stateParams, PlaylistService, ArtistaService) {
-                    return PlaylistService.buscaPlaylistPorNome($stateParams.nomePlaylist);
+                playlist: function($stateParams, PlaylistService) {
+                    return PlaylistService.buscaPlaylistPorId($stateParams.idPlaylist)
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
                 },
-                artistas: function(ArtistaService) {
-                    return ArtistaService.listarArtistas()
+                musicas: function(MusicaService) {
+                    return MusicaService.listarMusicas()
                         .catch((error) => {
                             console.log("Ocorreu um erro");
                             console.log(error);

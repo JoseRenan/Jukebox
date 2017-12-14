@@ -12,7 +12,7 @@
             },
             errorCallback: (response) => {
                 let q = $q.defer();
-                if(response.data.message && response.data.errorCode) {
+                if(response.data.message) {
                     q.reject(response.data);
                 } else {
                     q.reject({message: 'Ocorreu um erro ao se comunicar com o servidor, Tente novamente mais tarde'});

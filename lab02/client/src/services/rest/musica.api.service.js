@@ -20,7 +20,6 @@
             } if (idArtista) {
                 data.params.idArtista = idArtista;
             }
-            console.log(data);
             return $http.get(this.url, data)
                 .then(API.successCallback)
                 .catch(API.errorCallback);
