@@ -9,13 +9,17 @@ public class Musica {
     private Integer musicaId;
     private String nome;
     private String duracao;
+    private String ano;
     private Album album;
 
     public Musica() {}
 
-    public Musica(String nome, String duracao) {
+    public Musica(Integer musicaId, String nome, String duracao, String ano, Album album) {
+        this.musicaId = musicaId;
         this.nome = nome;
         this.duracao = duracao;
+        this.ano = ano;
+        this.album = album;
     }
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,6 +58,15 @@ public class Musica {
 
     public void setAlbum(Album album) {
         this.album = album;
+    }
+
+    @Column(name = "ano")
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
     }
 
     @Override
