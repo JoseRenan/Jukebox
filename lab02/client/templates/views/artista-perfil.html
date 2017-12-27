@@ -10,9 +10,9 @@
                 <p class="lead" ng-hide="perfilCtrl.artista.ultimaMusicaOuvida">Não foi ouvida nenhuma música desse artista.</p>
                 <hr class="my-4">
                 <div class="row">
-                    <jk-rating-stars max-rating="5" rating="perfilCtrl.artista.nota"></jk-rating-stars>
+                    <jk-rating-stars max-rating="5" rating="perfilCtrl.artista.nota" on-rating="perfilCtrl.onRating(perfilCtrl.artista)"></jk-rating-stars>
                     <div style="width: 30px"></div>
-                    <botao-favorito eh-favorito="perfilCtrl.artista.ehFavorito"></botao-favorito>
+                    <botao-favorito artista="perfilCtrl.artista"></botao-favorito>
                 </div>
             </div>
         </div>

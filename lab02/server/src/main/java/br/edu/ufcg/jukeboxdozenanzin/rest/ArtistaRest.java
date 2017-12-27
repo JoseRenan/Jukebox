@@ -2,10 +2,10 @@ package br.edu.ufcg.jukeboxdozenanzin.rest;
 
 import br.edu.ufcg.jukeboxdozenanzin.entity.Artista;
 import br.edu.ufcg.jukeboxdozenanzin.service.ArtistaService;
-import br.edu.ufcg.jukeboxdozenanzin.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @RestController
 @RequestMapping("/artistas")
@@ -18,6 +18,11 @@ public class ArtistaRest {
     public Artista cadastraArtista(@RequestBody Artista artista) {
         Artista novoArtista = artistaService.cadastraArtista(artista);
         return novoArtista;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public Artista atualizaArtista(@PathVariable Integer id, @RequestBody Artista artista) {
+        return artistaService.atualizaArtista(id, artista);
     }
 
     @RequestMapping(method = RequestMethod.GET)

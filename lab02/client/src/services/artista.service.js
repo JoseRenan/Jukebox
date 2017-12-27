@@ -15,6 +15,10 @@
             return Artista.get(artistaId);
         }
 
+        this.atualizarArtista = (artistaId, artista) => {
+            return Artista.put(artistaId, artista);
+        }
+
         this.salvarArtista = (artista, onSuccess, onError) => {
             Artista.post(artista)
                 .then(artista => onSuccess())

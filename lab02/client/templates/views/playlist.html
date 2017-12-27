@@ -67,7 +67,7 @@
                     <tr ng-repeat="playlist in playlistCtrl.playlists | filter:playlistCtrl.searchPlaylists">
                         <td>{{playlist.nome}}</td>
                         <td class=" text-right">
-                            <a href="" ui-sref="detalhesPlaylist({idPlaylist: playlist.playlistId})">Ver detalhes</a>
+                            <a href="" ui-sref="home.detalhesPlaylist({idPlaylist: playlist.playlistId})">Ver detalhes</a>
                         </td>
                     </tr>
                 </tbody>

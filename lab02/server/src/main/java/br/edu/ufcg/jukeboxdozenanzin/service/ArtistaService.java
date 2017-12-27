@@ -23,6 +23,15 @@ public class ArtistaService {
         return artistaReposotory.save(artista);
     }
 
+    public Artista atualizaArtista(Integer idArtista, Artista artista) {
+        Artista artistaBd = buscarArtista(idArtista);
+        artistaBd.setFavorito(artista.getFavorito());
+        artistaBd.setLinkFoto(artista.getLinkFoto());
+        artistaBd.setNome(artista.getNome());
+        artistaBd.setNota(artista.getNota());
+        return artistaReposotory.save(artistaBd);
+    }
+
     public Iterable<Artista> listarArtistas() {
         return artistaReposotory.findAll();
     }

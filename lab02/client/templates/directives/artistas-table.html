@@ -10,7 +10,7 @@
         <tr ng-repeat="artista in artistas | filter:textoBusca">
             <td>{{artista.nome}}</td>
             <td class=" text-right">
-                <a ui-sref="perfil({artistaId: artista.artistaId})">Ver detalhes</a>
+                <a ui-sref="home.perfil({artistaId: artista.artistaId})">Ver detalhes</a>
             </td>
         </tr>
     </tbody>

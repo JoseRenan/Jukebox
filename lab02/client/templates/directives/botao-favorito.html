@@ -1,6 +1,6 @@
 <button 
-    ng-class="!ehFavorito ? 'btn-primary' : 'btn-danger'"
+    ng-class="!artista.favorito ? 'btn-primary' : 'btn-danger'"
     class="btn btn-primary btn-sm" 
-    ng-click="favoritarOuDesfavoritar()">
-    {{!ehFavorito ? 'Adicionar aos favorivos' : 'Remover dos favoritos'}}
+    ng-click="favoritarOuDesfavoritar(artista)">
+    {{!artista.favorito ? 'Adicionar aos favorivos' : 'Remover dos favoritos'}}
 </button>

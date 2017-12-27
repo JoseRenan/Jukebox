@@ -5,6 +5,9 @@
   "repository": "https://github.com/JoseRenan/labs-si",
   "author": "José Renan",
   "license": "MIT",
+  "scripts": {
+    "start": "live-server --port=7000"
+  },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.10",
     "angular": "^1.6.6",
@@ -12,5 +15,8 @@
     "angular-jk-rating-stars": "^1.0.8",
     "bootstrap": "4.0.0-beta.2",
     "ng-toast": "^2.0.0"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0"
   }
 }

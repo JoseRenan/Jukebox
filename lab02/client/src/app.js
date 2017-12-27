@@ -1,10 +1,19 @@
 const app = angular.module('jukeboxApp', ['ui.router', 'ngToast', 'jkAngularRatingStars']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/inicio');
+    $urlRouterProvider.otherwise('/');
     $stateProvider
-        .state('inicio', {
-            url: '/inicio',
+        .state('login', {
+            url: '/',
+            controller: 'authController',
+            controllerAs: 'authCtrl',
+            templateUrl: 'templates/views/login.html'
+        }).state('home', {
+            url: '/home',
+            abstract: true,
+            templateUrl: 'templates/views/home.html',
+        }).state('home.musicas', {
+            url: '/musicas',
             controller: 'musicaController',
             controllerAs: 'musicaCtrl',
             templateUrl: 'templates/views/musica.html',
@@ -17,7 +26,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                         });
                 }
             }
-        }).state('artistas', {
+        }).state('home.artistas', {
             url: '/artistas',
             controller: 'artistaController',
             controllerAs: 'artistaCtrl',
@@ -31,7 +40,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                         });
                 }
             }
-        }).state('perfil', {
+        }).state('home.perfil', {
             url: '/perfil/:artistaId',
             controller: 'artistaPerfilController',
             controllerAs: 'perfilCtrl',
@@ -52,7 +61,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                         });
                 }
             }
-        }).state('playlists', {
+        }).state('home.playlists', {
             url: '/playlists',
             controller: 'playlistController',
             controllerAs: 'playlistCtrl',
@@ -73,7 +82,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                         });
                 }
             }
-        }).state('detalhesPlaylist', {
+        }).state('home.detalhesPlaylist', {
             url: '/detalhes/:idPlaylist',
             controller: 'playlistDetalhesController',
             controllerAs: 'detalhesCtrl',

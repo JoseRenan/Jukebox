@@ -11,11 +11,6 @@
             return Playlist.get(idPlaylist);
         }
 
-        let musicaAdicionada = (playlist, nomeMusica) => {
-            let buscaMusica = (musica) => { return musica.nome === nomeMusica };
-            return !!playlist.musicas.find(buscaMusica);
-        }
-
         this.adicionaMusicaPlaylist = (musica, playlist, onSuccess, onError) => {
             return Playlist.postMusica(playlist.playlistId, musica)
                 .then(playlist => onSuccess(playlist))

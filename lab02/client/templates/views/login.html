@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mx-auto" href="#">Jukebox do Zenan</a>
+</nav>
+
+<div class="content container home">
+    <div class="form-home row">
+        <form class="col-6">
+            <h3>Cadastre-se</h3>
+            <hr class="my-4">
+            <input 
+                class="form-control"
+                placeholder="Nome completo"
+                type="text"
+                ng-required="true">
+            </input>
+
+            <input 
+                class="form-control"
+                placeholder="Email"
+                type="email"
+                ng-required="true">
+            </input>
+
+            <input
+                class="form-control"
+                placeholder="Senha"
+                type="password">
+            </input>
+
+            <input
+                class="form-control"
+                placeholder="Repita a senha"
+                type="password">
+            </input>
+            
+            <button class="btn btn-primary btn-block" type="submit">Cadastrar</button>
+        </form>
+        <form class="col-6" ng-submit="authCtrl.login(authCtrl.userCredentials)">
+            <h3>Entrar</h3>
+            <hr class="my-4">
+            <input 
+                class="form-control"
+                placeholder="Email"
+                type="email"
+                ng-model="authCtrl.userCredentials.email"
+                ng-required="true">
+            </input>
+
+            <input
+                class="form-control"
+                ng-model="authCtrl.userCredentials.password"
+                placeholder="Senha"
+                ng-required="true"
+                type="password">
+            </input>
+            
+            <button class="btn btn-primary btn-block" type="submit">Login</button>
+        </form>
+    </div>
+</div>

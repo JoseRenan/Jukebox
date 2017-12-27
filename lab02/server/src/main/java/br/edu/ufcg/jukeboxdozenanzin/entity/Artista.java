@@ -1,5 +1,7 @@
 package br.edu.ufcg.jukeboxdozenanzin.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,12 +11,17 @@ public class Artista {
     private Integer artistaId;
     private String nome;
     private String linkFoto;
+    private Boolean isFavorito;
+    private Integer nota;
 
     public Artista() {}
 
-    public Artista(String nome, String linkFoto) {
+    public Artista(String nome, String linkFoto, Boolean isFavorito, Integer nota) {
+        this.artistaId = artistaId;
         this.nome = nome;
         this.linkFoto = linkFoto;
+        this.isFavorito = isFavorito;
+        this.nota = nota;
     }
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,5 +50,23 @@ public class Artista {
 
     public void setLinkFoto(String linkFoto) {
         this.linkFoto = linkFoto;
+    }
+
+    @Column(name = "is_favorito", nullable = false, columnDefinition = "TINYINT(1)")
+    public Boolean getFavorito() {
+        return isFavorito;
+    }
+
+    public void setFavorito(Boolean favorito) {
+        isFavorito = favorito;
+    }
+
+    @Column(name = "nota_artista")
+    public Integer getNota() {
+        return nota;
+    }
+
+    public void setNota(Integer nota) {
+        this.nota = nota;
     }
 }

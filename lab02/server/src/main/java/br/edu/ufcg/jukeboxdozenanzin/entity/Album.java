@@ -9,6 +9,7 @@ public class Album {
     private Integer idAlbum;
     private Artista artista;
     private String nome;
+    private Usuario usuario;
 
     public Album() {}
 

@@ -20,16 +20,19 @@
 
         <script src="./src/consts/api.values.js"></script>
 
+        <script src="./src/services/rest/auth.api.service.js"></script>
         <script src="./src/services/rest/artista.api.service.js"></script>
         <script src="./src/services/rest/musica.api.service.js"></script>
         <script src="./src/services/rest/playlist.api.service.js"></script>
 
+        <script src="./src/services/auth.service.js"></script>
         <script src="./src/services/notification.service.js"></script>
         <script src="./src/services/artista.service.js"></script>
         <script src="./src/services/musica.service.js"></script>
         <script src="./src/services/playlist.service.js"></script>
         <script src="./src/services/ouvir.service.js"></script>
 
+        <script src="./src/controllers/auth.controller.js"></script>
         <script src="./src/controllers/artista.controller.js"></script>
         <script src="./src/controllers/artista-perfil.controller.js"></script>
         <script src="./src/controllers/musica.controller.js"></script>
@@ -43,13 +46,7 @@
     </head>
 
     <body>
-
-        <div ng-include="'templates/navbar.html'"></div>
-
         <toast></toast>
-        
-        <div class="content">
-            <ui-view></ui-view>
-        </div>
+        <ui-view></ui-view>
     </body>
 </html>

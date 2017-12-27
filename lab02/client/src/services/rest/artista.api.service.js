@@ -13,6 +13,12 @@
             }
         }
 
+        this.put = (id, artista) => {
+            return $http.put(`${this.url}/${id}`, artista)
+                .then(API.successCallback)
+                .catch(API.errorCallback);
+        }
+
         this.query = (nome) => {
             let data = {params: {}};
             if (nome) {
