@@ -11,7 +11,6 @@
                 return response.data;
             },
             errorCallback: (response) => {
-                console.log(response);
                 let q = $q.defer();
                 if(response.data.message) {
                     q.reject(response.data);

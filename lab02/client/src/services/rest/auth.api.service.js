@@ -7,8 +7,8 @@
 
         this.signIn = (userCredentials) => {
             return $http.post(`${this.url}/`, userCredentials)
-                .then((reponse) => {
-                    return response.headers("Authorizarion");
+                .then((response) => {
+                    return response.headers("Authorization");
                 }).catch(API.errorCallback);
         }
     });

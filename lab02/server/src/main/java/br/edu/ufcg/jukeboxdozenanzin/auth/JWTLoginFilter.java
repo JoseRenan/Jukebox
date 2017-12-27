@@ -39,7 +39,5 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication auth) throws IOException, ServletException {
         TokenAuthService.addAuthentication(response, auth.getName());
-        response.addHeader("Content-Type", "application/json");
-        response.getWriter().write("{\"message\":\"Login realizado com sucesso\"}");
     }
 }

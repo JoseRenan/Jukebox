@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioRest {
@@ -18,6 +20,12 @@ public class UsuarioRest {
     @RequestMapping(method = RequestMethod.POST)
     public Usuario cadastraUsuario(@RequestBody Usuario artista) {
         return usuarioRepository.save(artista);
+    }
+
+    @RequestMapping(value = "/token", method = RequestMethod.GET)
+    public Usuario cadastraUsuario(Principal usuario) {
+        Usuario user = usuarioRepository.findUsuarioByEmail(usuario.getName());
+        return user;
     }
 
 }

@@ -4,13 +4,14 @@
 
 <div class="content container home">
     <div class="form-home row">
-        <form class="col-6">
+        <form class="col-6" ng-submit="authCtrl.cadastro(authCtrl.user, authCtrl.repeatPassword)">
             <h3>Cadastre-se</h3>
             <hr class="my-4">
             <input 
                 class="form-control"
                 placeholder="Nome completo"
                 type="text"
+                ng-model="authCtrl.user.nome"
                 ng-required="true">
             </input>
 
@@ -18,18 +19,21 @@
                 class="form-control"
                 placeholder="Email"
                 type="email"
+                ng-model="authCtrl.user.email"
                 ng-required="true">
             </input>
 
             <input
                 class="form-control"
                 placeholder="Senha"
+                ng-model="authCtrl.user.password"
                 type="password">
             </input>
 
             <input
                 class="form-control"
                 placeholder="Repita a senha"
+                ng-model="authCtrl.repeatPassword"
                 type="password">
             </input>
             

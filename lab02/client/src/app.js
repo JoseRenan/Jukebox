@@ -1,7 +1,8 @@
 const app = angular.module('jukeboxApp', ['ui.router', 'ngToast', 'jkAngularRatingStars']);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/');
+app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    $httpProvider.interceptors.push('httpRequestInterceptor');
+    $urlRouterProvider.otherwise('/home/musicas');
     $stateProvider
         .state('login', {
             url: '/',
@@ -11,7 +12,18 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }).state('home', {
             url: '/home',
             abstract: true,
+            controller: 'userController',
+            controllerAs: 'userCtrl',
             templateUrl: 'templates/views/home.html',
+            resolve: {
+                usuario: function(UsuarioService) {
+                    return UsuarioService.recuperarUsuarioAtual()
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
+                }
+            }
         }).state('home.musicas', {
             url: '/musicas',
             controller: 'musicaController',
@@ -104,4 +116,23 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         });
+});
+
+app.factory('httpRequestInterceptor', function ($rootScope, $window, $state) {
+    return {
+        'request': function ($config) {
+            const token = $window.sessionStorage.token;
+            if (token) {
+                $config.headers['Authorization'] = token;
+            }
+            return $config;
+        },
+        'responseError': function(response) {
+            if (response.status == 403) {
+                delete $window.sessionStorage.token;
+                $state.go("login");
+            }
+            return response;
+        },
+    };
 });
