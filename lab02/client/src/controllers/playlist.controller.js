@@ -1,7 +1,7 @@
 (function () {
     'use strict';
     
-    app.controller('playlistController', function (PlaylistService, NotificationService, musicas, playlists) {
+    app.controller('playlistController', function (PlaylistService, NotificationService, musicas, playlists, $state) {
 
         this.playlists = playlists;
         this.musicas = angular.copy(musicas);
@@ -22,12 +22,9 @@
         }
 
         this.salvarPlaylist = (playlist) => {
-            PlaylistService.criaPlaylist(angular.copy(playlist), () => {
+            PlaylistService.criaPlaylist(angular.copy(playlist), (playlist) => {
                 NotificationService.success('Playlist criada com sucesso');
-                this.musicas = angular.copy(musicas);
-                this.playlist = {
-                    musicas: []
-                };
+                $state.reload();
             }, (mensagem) => {
                 NotificationService.error(`Erro ao salvar. ${mensagem}`);
             });

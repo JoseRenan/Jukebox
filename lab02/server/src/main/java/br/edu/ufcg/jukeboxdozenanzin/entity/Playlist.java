@@ -11,6 +11,7 @@ public class Playlist {
     private Integer playlistId;
     private String nome;
     private List<Musica> musicas;
+    private Usuario criador;
 
     public Playlist() {
         this.musicas = new ArrayList<Musica>();
@@ -56,5 +57,15 @@ public class Playlist {
 
     public void setMusicas(List<Musica> musicas) {
         this.musicas = musicas;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "fk_usuario_criador")
+    public Usuario getCriador() {
+        return criador;
+    }
+
+    public void setCriador(Usuario criador) {
+        this.criador = criador;
     }
 }

@@ -8,6 +8,5 @@ import java.util.List;
 
 public interface AlbumRepository extends CrudRepository<Album, Integer> {
     List<Album> findAlbumsByArtista(Artista artista);
-    List<Album> findAlbumsByNomeContaining(String nome);
     Album findAlbumByNome(String nome);
 }

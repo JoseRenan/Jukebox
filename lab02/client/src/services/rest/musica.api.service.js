@@ -13,6 +13,18 @@
             }
         }
 
+        this.ouvir = (id) => {
+            return $http.get(`${this.url}/${id}/ouvir`)
+                .then(API.successCallback)
+                .catch(API.errorCallback);
+        }
+
+        this.ultimaOuvida = (id) => {
+            return $http.get(`${this.url}/artista/${id}/ouvidas`)
+                .then(API.successCallback)
+                .catch(API.errorCallback);
+        }
+
         this.query = ({nome, idArtista} = {}) => {
             let data = {params: {}};
             if (nome) {

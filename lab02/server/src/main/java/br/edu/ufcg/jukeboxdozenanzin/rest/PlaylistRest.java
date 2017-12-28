@@ -6,6 +6,8 @@ import br.edu.ufcg.jukeboxdozenanzin.service.PlaylistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/playlists")
 public class PlaylistRest {
@@ -14,8 +16,8 @@ public class PlaylistRest {
     PlaylistService playlistService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public Playlist adicionaPlaylist(@RequestBody Playlist playlist) {
-        return playlistService.adicionaPlaylist(playlist);
+    public Playlist adicionaPlaylist(@RequestBody Playlist playlist, Principal principal) {
+        return playlistService.adicionaPlaylist(playlist, principal.getName());
     }
 
     @RequestMapping(value = "/{idPlaylist}/musicas", method = RequestMethod.POST)
@@ -34,8 +36,8 @@ public class PlaylistRest {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Playlist> listaPlaylists() {
-        return playlistService.listarPlaylists();
+    public Iterable<Playlist> listaPlaylists(Principal principal) {
+        return playlistService.listarPlaylists(principal.getName());
     }
 
 }

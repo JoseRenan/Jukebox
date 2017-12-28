@@ -6,13 +6,13 @@
             </div>
             <div class="col-10" style="padding-left:50px;">
                 <h1 class="display-4">{{perfilCtrl.artista.nome}}</h1>
-                <p class="lead" ng-show="perfilCtrl.artista.ultimaMusicaOuvida">{{perfilCtrl.artista.ultimaMusicaOuvida.nome}} foi a última música ouvida do artista.</p>
-                <p class="lead" ng-hide="perfilCtrl.artista.ultimaMusicaOuvida">Não foi ouvida nenhuma música desse artista.</p>
+                <p class="lead" ng-show="perfilCtrl.musicaOuvida">{{perfilCtrl.musicaOuvida.nome}} foi a última música ouvida do artista.</p>
+                <p class="lead" ng-hide="perfilCtrl.musicaOuvida">Não foi ouvida nenhuma música desse artista.</p>
                 <hr class="my-4">
                 <div class="row">
-                    <jk-rating-stars max-rating="5" rating="perfilCtrl.artista.nota" on-rating="perfilCtrl.onRating(perfilCtrl.artista)"></jk-rating-stars>
+                    <jk-rating-stars max-rating="5" rating="perfilCtrl.avaliacaoArtista.nota" on-rating="perfilCtrl.onRating(perfilCtrl.avaliacaoArtista)"></jk-rating-stars>
                     <div style="width: 30px"></div>
-                    <botao-favorito artista="perfilCtrl.artista"></botao-favorito>
+                    <botao-favorito artista="perfilCtrl.artista" avaliacao-artista="perfilCtrl.avaliacaoArtista"></botao-favorito>
                 </div>
             </div>
         </div>
@@ -21,11 +21,11 @@
 
 <div class="container home">
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <h3>Lista de álbums</h3>
-            <albums-table albums="perfilCtrl.artista.albums"></albums-table>
+            <albums-table albums="perfilCtrl.albums"></albums-table>
         </div>
-        <div class="col-6">
+        <div class="col-8">
             <h3>Lista de músicas</h3>
             <table class="table table-striped">
                 <thead>
@@ -33,6 +33,7 @@
                         <th>Nome da música</th>
                         <th>Ano</th>
                         <th>Duração</th>
+                        <th>Album</th>
                         <th scope="text-right"></th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@
                         <td>{{musica.nome}}</td>
                         <td>{{musica.ano}}</td>
                         <td>{{musica.duracao}}</td>
+                        <td>{{musica.album.nome}}</td>
                         <td class="text-right">
                             <a href="" ng-click="perfilCtrl.ouvir(musica)">
                                 Ouvir

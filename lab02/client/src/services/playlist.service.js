@@ -25,7 +25,7 @@
 
         this.criaPlaylist = (playlist, onSuccess, onError) => {
             return Playlist.post(playlist)
-                .then(playlist => onSuccess())
+                .then(playlist => onSuccess(playlist))
                 .catch(error => onError(error.message));
         }
     });

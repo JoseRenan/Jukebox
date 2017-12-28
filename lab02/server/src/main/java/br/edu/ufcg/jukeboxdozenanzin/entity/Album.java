@@ -38,7 +38,7 @@ public class Album {
         this.artista = artista;
     }
 
-    @Column(name = "nm_album")
+    @Column(name = "nm_album", unique = true)
     public String getNome() {
         return nome;
     }
@@ -46,4 +46,5 @@ public class Album {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
 }

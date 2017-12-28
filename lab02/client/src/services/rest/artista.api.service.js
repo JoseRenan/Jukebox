@@ -13,8 +13,14 @@
             }
         }
 
-        this.put = (id, artista) => {
-            return $http.put(`${this.url}/${id}`, artista)
+        this.put = (id, avaliacaoArtista) => {
+            return $http.put(`${this.url}/${id}/avaliacao`, avaliacaoArtista)
+                .then(API.successCallback)
+                .catch(API.errorCallback);
+        }
+
+        this.getAvaliacao = (id) => {
+            return $http.get(`${this.url}/${id}/avaliacao`)
                 .then(API.successCallback)
                 .catch(API.errorCallback);
         }

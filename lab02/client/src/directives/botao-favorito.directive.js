@@ -4,12 +4,12 @@
     app.directive('botaoFavorito', function ($state, ArtistaService) {
         
         let link = (scope, element, attrs) => {
-            scope.favoritarOuDesfavoritar = (artista) => {
+            scope.favoritarOuDesfavoritar = (avaliacaoArtista, artista) => {
                 let resposta = confirm("Você realmente deseja fazer isso?");
                 if (resposta) {
-                    scope.artista.favorito = !scope.artista.favorito;
-                    ArtistaService.atualizarArtista(artista.artistaId, artista)
-                        .then(artistaAtualizado => (artista = artistaAtualizado));
+                    scope.avaliacaoArtista.favorito = !scope.avaliacaoArtista.favorito;
+                    ArtistaService.avaliarArtista(artista.artistaId, avaliacaoArtista)
+                        .then(avaliacaoArtistaAtualizada => (avaliacaoArtista = avaliacaoArtistaAtualizada));
                 }
             }
         }
@@ -18,7 +18,8 @@
             restrict: 'E',
             link: link,
             scope: {
-                artista: '='
+                artista: '=',
+                avaliacaoArtista: '='
             },
             templateUrl: 'templates/directives/botao-favorito.html'
         };

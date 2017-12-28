@@ -1,6 +1,7 @@
 package br.edu.ufcg.jukeboxdozenanzin.rest;
 
 import br.edu.ufcg.jukeboxdozenanzin.entity.Artista;
+import br.edu.ufcg.jukeboxdozenanzin.entity.AvaliacaoArtistaUsuario;
 import br.edu.ufcg.jukeboxdozenanzin.service.ArtistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,14 @@ public class ArtistaRest {
         return novoArtista;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Artista atualizaArtista(@PathVariable Integer id, @RequestBody Artista artista) {
-        return artistaService.atualizaArtista(id, artista);
+    @RequestMapping(value = "/{id}/avaliacao", method = RequestMethod.PUT)
+    public AvaliacaoArtistaUsuario avaliarArtista(@PathVariable Integer id, @RequestBody AvaliacaoArtistaUsuario avaliacaoArtistaUsuario, Principal principal) {
+        return artistaService.avaliarArtista(id, principal.getName(), avaliacaoArtistaUsuario);
+    }
+
+    @RequestMapping(value = "/{id}/avaliacao", method = RequestMethod.GET)
+    public AvaliacaoArtistaUsuario recuperarAvaliacaoArtista(@PathVariable Integer id, Principal principal) {
+        return artistaService.buscarAvaliacaoArtistaOuCria(id, principal.getName());
     }
 
     @RequestMapping(method = RequestMethod.GET)

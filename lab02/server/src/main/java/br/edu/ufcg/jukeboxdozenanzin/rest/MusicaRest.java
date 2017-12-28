@@ -5,6 +5,8 @@ import br.edu.ufcg.jukeboxdozenanzin.service.MusicaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @RestController
 @RequestMapping("/musicas")
 public class MusicaRest {
@@ -20,6 +22,16 @@ public class MusicaRest {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Musica recuperarArtista(@PathVariable Integer id) {
         return musicaService.buscaMusica(id);
+    }
+
+    @RequestMapping(value = "/{id}/ouvir", method = RequestMethod.GET)
+    public Musica ouvirMusica(@PathVariable Integer id, Principal principal) {
+        return musicaService.ouvirMusica(id, principal.getName());
+    }
+
+    @RequestMapping(value = "/artista/{id}/ouvidas", method = RequestMethod.GET)
+    public Musica musicaOuvida(@PathVariable Integer id, Principal principal) {
+        return musicaService.ultimaMusicaOuvidaPorIdArtista(id, principal.getName());
     }
 
     @RequestMapping(method = RequestMethod.GET)

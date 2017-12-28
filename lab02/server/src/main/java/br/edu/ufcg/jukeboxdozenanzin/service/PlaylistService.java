@@ -2,7 +2,9 @@ package br.edu.ufcg.jukeboxdozenanzin.service;
 
 import br.edu.ufcg.jukeboxdozenanzin.entity.Musica;
 import br.edu.ufcg.jukeboxdozenanzin.entity.Playlist;
+import br.edu.ufcg.jukeboxdozenanzin.entity.Usuario;
 import br.edu.ufcg.jukeboxdozenanzin.repository.PlaylistRepository;
+import br.edu.ufcg.jukeboxdozenanzin.repository.UsuarioRepository;
 import br.edu.ufcg.jukeboxdozenanzin.validation.Validator;
 import br.edu.ufcg.jukeboxdozenanzin.validation.error.JukeboxException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class PlaylistService {
     PlaylistRepository playlistRepository;
 
     @Autowired
+    UsuarioRepository usuarioRepository;
+
+    @Autowired
     MusicaService musicaService;
 
     @Autowired @Qualifier("playlistValidator")
@@ -26,8 +31,10 @@ public class PlaylistService {
     @Autowired @Qualifier("musicaValidator")
     Validator musicaValidator;
 
-    public Playlist adicionaPlaylist(Playlist playlist) {
+    public Playlist adicionaPlaylist(Playlist playlist, String criadorEmail) {
         playlistValidator.validaCadastro(playlist);
+        Usuario usuario = usuarioRepository.findUsuarioByEmail(criadorEmail);
+        playlist.setCriador(usuario);
         playlistRepository.save(playlist);
         return playlist;
     }
@@ -40,8 +47,8 @@ public class PlaylistService {
         return playlistRepository.findOne(idPlaylist);
     }
 
-    public Iterable<Playlist> listarPlaylists() {
-        return playlistRepository.findAll();
+    public Iterable<Playlist> listarPlaylists(String criadorEmail) {
+        return playlistRepository.findPlaylistsByCriadorEmail(criadorEmail);
     }
 
     public Playlist adicionaMusicaNaPlaylist(Integer idPlaylist, Musica musica) {

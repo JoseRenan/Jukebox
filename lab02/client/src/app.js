@@ -71,7 +71,28 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
                             console.log("Ocorreu um erro");
                             console.log(error);
                         });
-                }
+                },
+                musicaOuvida: function($stateParams, OuvirService) {
+                    return OuvirService.ultimaOuvida($stateParams.artistaId)
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
+                },
+                albums: function($stateParams, AlbumService) {
+                    return AlbumService.buscaAlbumPorArtista($stateParams.artistaId)
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
+                },
+                avaliacaoArtista: function($stateParams, ArtistaService) {
+                    return ArtistaService.recuperarAvaliacao($stateParams.artistaId)
+                        .catch((error) => {
+                            console.log("Ocorreu um erro");
+                            console.log(error);
+                        });
+                },
             }
         }).state('home.playlists', {
             url: '/playlists',
@@ -118,7 +139,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         });
 });
 
-app.factory('httpRequestInterceptor', function ($rootScope, $window, $state) {
+app.factory('httpRequestInterceptor', function ($rootScope, $window, $state, $q) {
     return {
         'request': function ($config) {
             const token = $window.sessionStorage.token;
@@ -128,11 +149,16 @@ app.factory('httpRequestInterceptor', function ($rootScope, $window, $state) {
             return $config;
         },
         'responseError': function(response) {
+            let q = $q.defer();
             if (response.status == 403) {
                 delete $window.sessionStorage.token;
                 $state.go("login");
             }
-            return response;
+            if (response.status == 401) {
+                response.data.message = "Login ou senha incorretos";
+            }
+            q.reject(response);
+            return q.promise;
         },
     };
 });

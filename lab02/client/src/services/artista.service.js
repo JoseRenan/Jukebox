@@ -15,8 +15,12 @@
             return Artista.get(artistaId);
         }
 
-        this.atualizarArtista = (artistaId, artista) => {
-            return Artista.put(artistaId, artista);
+        this.avaliarArtista = (artistaId, avaliacaoArtista) => {
+            return Artista.put(artistaId, avaliacaoArtista);
+        }
+
+        this.recuperarAvaliacao = (artistaId) => {
+            return Artista.getAvaliacao(artistaId);
         }
 
         this.salvarArtista = (artista, onSuccess, onError) => {
