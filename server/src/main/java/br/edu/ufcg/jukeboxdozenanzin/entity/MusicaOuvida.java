@@ -31,7 +31,7 @@ public class MusicaOuvida {
     }
 
     @ManyToOne
-    @JoinColumn(name = "fk_musica", unique = true, nullable = false)
+    @JoinColumn(name = "fk_musica")
     public Musica getMusica() {
         return musica;
     }
