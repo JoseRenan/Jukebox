@@ -4,7 +4,7 @@
     app.factory('API', function ($q) {
         return {
             getResourceUrl: (resourcePath) => {
-                let BASE_URL = 'http://localhost:8080';
+                let BASE_URL = 'https://jukebox-si.herokuapp.com';
                 return BASE_URL + resourcePath;
             }, 
             successCallback: (response) => {
