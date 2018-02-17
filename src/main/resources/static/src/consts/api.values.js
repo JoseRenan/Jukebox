@@ -4,9 +4,10 @@
     app.factory('API', function ($q) {
         return {
             getResourceUrl: (resourcePath) => {
-                let BASE_URL = 'https://jukebox-si.herokuapp.com';
+                let url = location.href.split(':');
+                let BASE_URL = url[0] + ':' + url[1] + ':8080';
                 return BASE_URL + resourcePath;
-            }, 
+            },
             successCallback: (response) => {
                 return response.data;
             },
