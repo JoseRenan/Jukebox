@@ -6,6 +6,9 @@
             getResourceUrl: (resourcePath) => {
                 let url = location.href.split(':');
                 let BASE_URL = url[0] + ':' + url[1] + ':8080';
+                if (url[0] === 'https') {
+                    BASE_URL = 'https://jukebox-si.herokuapp.com';
+                }
                 return BASE_URL + resourcePath;
             },
             successCallback: (response) => {
